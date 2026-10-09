@@ -31,6 +31,16 @@ header small{font-size:11px}
 .diagnosticDetails{background:#fff;border:1px solid #9ebdcc;border-radius:6px;margin-bottom:10px;padding:0}.diagnosticDetails summary{cursor:pointer;padding:10px 12px;background:#eef8fc;font-weight:bold;color:#17313d}.diagnosticDetails>.panel{border:0;margin:0;border-radius:0}.diagInner{padding:8px}.diagInner>.panel{margin-bottom:10px}.resultHint{background:#f4fbfe;margin-bottom:10px}.diagCount{font-weight:normal;color:#61727a;font-size:12px}.diagnosticDetails[open] summary{border-bottom:1px solid #b7d3df}
 .analysisReason{white-space:normal !important;max-width:420px;vertical-align:top}.analysisReason details summary{cursor:pointer;font-weight:600;line-height:1.2}.reasonFull{padding-top:6px;line-height:1.35;white-space:normal;color:#526770}.mobileReasonRow{display:none}.mobileReasonRow td{white-space:normal !important;background:#f7fbfd;font-size:12px;line-height:1.35}.mobileReasonRow details summary{cursor:pointer;font-weight:bold;padding:2px 0}.mobileReasonRow details div{padding-top:6px;color:#526770}
 @media(max-width:700px){
+/* Daily schedule: fit all five columns on a phone without horizontal scrolling. */
+#results .dailyScheduleWide{overflow-x:hidden !important;overflow-y:auto;max-width:100%;width:100%}
+#results .dailyScheduleWide table{min-width:0 !important;width:100% !important;table-layout:fixed;font-size:10px}
+#results .dailyScheduleWide th,#results .dailyScheduleWide td{padding:4px 2px;font-size:10px;white-space:normal;overflow-wrap:anywhere;word-break:normal;line-height:1.2}
+#results .dailyScheduleWide th:nth-child(1),#results .dailyScheduleWide td:nth-child(1){width:8%;text-align:center}
+#results .dailyScheduleWide th:nth-child(2),#results .dailyScheduleWide td:nth-child(2){width:36%;overflow-wrap:anywhere}
+#results .dailyScheduleWide th:nth-child(3),#results .dailyScheduleWide td:nth-child(3){width:18%;text-align:center}
+#results .dailyScheduleWide th:nth-child(4),#results .dailyScheduleWide td:nth-child(4){width:18%;text-align:center}
+#results .dailyScheduleWide th:nth-child(5),#results .dailyScheduleWide td:nth-child(5){width:20%;text-align:center}
+#results .btnRow .btn{padding:7px 12px;font-size:12px}
 /* 0.9.80 mobile Analysis: keep the Lagna table fully visible instead of forcing a hidden horizontal scroll. */
 #analysis .split{display:block !important}
 #analysis .split .wide{overflow-x:visible !important;width:100% !important}
