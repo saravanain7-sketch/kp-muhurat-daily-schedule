@@ -1,5 +1,10 @@
-# KP Muhurat Daily Schedule
+# KP Muhurat — Professional Dashboard Update
 
-Separate GitHub Pages project. The Show button now opens the Results tab after calculation. Navigation order remains Data → Results → Muhurtam → Analysis.
+This is the separate KP Muhurat Daily Schedule project. The update refreshes the Data screen with a modern, responsive dashboard style while preserving the existing calculation code and navigation order: Data → Results → Muhurtam → Analysis.
 
-Upload `index.html` to the root of the separate `kp-muhurat-daily-schedule` repository and commit to `main`. The original Web 2.0 repository is not changed.
+## Publish on GitHub Pages
+1. Replace the `index.html` in the `kp-muhurat-daily-schedule` repository with this file.
+2. Commit to `main`.
+3. Refresh the GitHub Pages site after deployment.
+
+The original KP Muhurat Web 2.0 repository is not modified.

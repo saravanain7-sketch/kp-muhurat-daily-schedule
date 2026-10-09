@@ -222,6 +222,56 @@ header small{font-size:11px}
   #analysis .split .wide:nth-child(2) th:nth-child(6),#analysis .split .wide:nth-child(2) td:nth-child(6){width:47% !important;min-width:0 !important}
 }
 section#placeSelect, section#help{display:none !important}
+
+/* Modern professional dashboard refresh — visual-only overrides; calculation logic unchanged */
+:root{color-scheme:light;--ink:#172b3a;--muted:#647789;--brand:#1769aa;--brand-dark:#123b5a;--brand-soft:#e8f4fc;--line:#d7e2eb;--surface:#fff;--canvas:#f3f7fb}
+html,body{background:var(--canvas);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:14px}
+header{padding:15px 18px;background:linear-gradient(120deg,#102f49,#1769aa);color:#fff;border:0;box-shadow:0 3px 12px rgba(19,53,78,.16);letter-spacing:.2px}
+header b{font-size:19px;font-weight:750}
+nav{top:51px;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 7px rgba(24,54,78,.05);padding:0 8px;gap:2px}
+nav button{padding:13px 17px;font-size:14px;color:#526579;border-bottom:3px solid transparent;border-radius:8px 8px 0 0;transition:background .15s,color .15s}
+nav button.active{background:var(--brand-soft);border-bottom:3px solid var(--brand);color:var(--brand-dark);font-weight:750}
+main{max-width:980px;padding:16px 12px 28px}
+#data .panel.blue{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 6px 24px rgba(25,61,88,.07);position:relative;overflow:hidden}
+#data .panel.blue:before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,#1596d2,#70c8df)}
+#data h3{margin:4px 0 18px;font-size:20px;letter-spacing:-.35px;color:var(--brand-dark);display:flex;align-items:center;gap:10px}
+#data h3:after{content:"DATE · TIME · LOCATION";font-size:10px;font-weight:750;letter-spacing:1px;color:#7a91a4;margin-left:auto}
+#data label{font-size:12px;font-weight:750;color:#43596c;margin:10px 0 5px}
+#data input,#data select{min-width:0;width:100%;padding:11px 12px;border:1px solid #cbd8e3;border-radius:9px;background:#fbfdff;color:#172b3a;font-size:14px;min-height:43px;outline:none;box-shadow:0 1px 1px rgba(20,45,65,.02);transition:border-color .15s,box-shadow .15s}
+#data input:focus,#data select:focus{border-color:#3295d2;box-shadow:0 0 0 3px rgba(50,149,210,.14);background:#fff}
+#data .grid2{gap:12px 14px}
+#data .grid3{grid-template-columns:minmax(0,1fr) 82px;gap:8px;align-items:end;margin-top:1px}
+#data .grid3 label{margin-bottom:5px}
+#data .placeRow{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:8px}
+#data .placeRow input{min-width:0}
+#data .btn{min-height:43px;padding:10px 16px;border:1px solid #c6d6e3;border-radius:9px;background:#fff;color:#23465e;font-weight:750;box-shadow:0 1px 2px rgba(20,45,65,.04);margin:0 7px 0 0}
+#data .btn:active{transform:translateY(1px)}
+#data #show{background:linear-gradient(135deg,#1769aa,#1689c8);color:#fff;border:0;padding:12px 28px;min-width:124px;box-shadow:0 4px 10px rgba(23,105,170,.2);margin-top:16px}
+#data #install{margin-top:16px}
+#data #placeDbStatus{display:inline-block;margin:12px 0 0 4px!important;font-size:11px;color:var(--muted)}
+#data .status{margin-top:14px;padding:11px 13px;border:1px solid #d7e6f1;border-radius:10px;background:#f2f8fd;color:#516a7e;font-size:12px;line-height:1.5}
+.panel{border-color:var(--line);border-radius:12px;box-shadow:0 3px 14px rgba(25,61,88,.045)}
+.titlebar{border:1px solid #c5ddea;border-radius:9px;background:linear-gradient(120deg,#e4f4fc,#d2ecfa);color:#174b6d;padding:11px;font-size:16px}
+th{background:#edf4f8;color:#344f62}
+@media(max-width:700px){
+  header{padding:13px 16px;top:0}header b{font-size:18px}
+  nav{top:45px;padding:0 4px;gap:0}nav button{flex:0 0 auto;padding:12px 13px;font-size:13px}
+  main{padding:10px 9px 22px}
+  #data .panel.blue{padding:15px 12px 13px;border-radius:13px}
+  #data h3{font-size:18px;margin:3px 0 14px;display:block}
+  #data h3:after{display:block;margin:5px 0 0;font-size:9px;letter-spacing:.8px}
+  #data .grid2{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  #data .grid3{grid-template-columns:minmax(0,1fr) 62px;gap:7px}
+  #data label{font-size:11px;margin:8px 0 4px}
+  #data input,#data select{font-size:13px;padding:10px 8px;min-height:41px;border-radius:8px}
+  #data .placeRow{grid-template-columns:minmax(0,1fr) auto auto;gap:5px}
+  #data .placeRow .btn{min-width:0;padding:8px 9px;font-size:12px;white-space:nowrap}
+  #data .btn{min-height:41px;padding:9px 13px;font-size:13px}
+  #data #show{margin-top:14px;min-width:110px;padding:10px 23px}
+  #data #install{margin-top:14px}
+  #data .status{font-size:11px;padding:9px 10px}
+}
+
 </style></head><body>
 <header><b>KP Muhurat</b></header>
 <nav><button class="active" data-t="data">Data</button><button data-t="results">Results</button><button data-t="notes">Muhurtam</button><button data-t="analysis">Analysis</button></nav>
