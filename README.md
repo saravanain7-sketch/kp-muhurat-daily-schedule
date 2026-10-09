@@ -23,3 +23,6 @@ Keep the original `index.html` and `README.md` for KP Muhurat Web 2.0 in their o
 
 ## Select a schedule row
 Tap or focus any row in the Daily Combination Schedule to highlight it in blue. Selecting another row moves the highlight. This is a display-only interaction and does not change calculation timings.
+
+
+Latest UI update: removed the daily schedule explanatory sentence and simplified the visible header to “KP Muhurat”. The row-selection blue highlight remains.
