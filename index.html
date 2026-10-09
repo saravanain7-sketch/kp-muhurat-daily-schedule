@@ -2865,39 +2865,31 @@ function selectionLayer(a,event){
 }
 $('show').onclick=run;
 
-// 1.31 — Never leave Results/Analysis from an older date visible after the
-// user changes the event inputs. On mobile this was easy to trigger by using
-// the date picker and then opening Results without pressing Show again. The
-// stale list could therefore look like the same Muhurats were being returned
-// for multiple dates. Invalidate the old calculation immediately and run the
-// calculation again when a date/time/location/event field is committed.
+// 1.32 — Date and To date are input-only controls. Never calculate or
+// navigate when either date is selected. The user may finish both dates and
+// all other event fields, then explicitly tap Show to calculate and open Results.
 (function bindInputInvalidation(){
-  const ids=['date','from','to','place','lat','lon','tz','latdir','londir','tzdir','event'];
-  let timer=null;
+  const ids=['date','todate','from','to','place','lat','lon','tz','latdir','londir','tzdir','event'];
   function invalidate(){
     window.__selectionRows=[];
     window.__lastAnalyses=[];
-    const chosen=$('chosen'); if(chosen) chosen.innerHTML='<tr><td colspan=7>Inputs changed — recalculating for the selected date…</td></tr>';
+    window.__dailyScheduleRows=[];
+    const chosen=$('chosen'); if(chosen) chosen.innerHTML='<tr><td colspan=7>Inputs changed — tap Show to calculate the selected date range.</td></tr>';
     const ap=$('resultsAnalysisPanel'); if(ap) ap.hidden=true;
     const cp=$('selectedMuhuratChartPanel'); if(cp) cp.hidden=true; const ch=$('chartTabHint'); if(ch) ch.hidden=false;
     const rp=$('selectedMuhuratPanel'); if(rp) rp.hidden=true;
-    const st=$('status'); if(st){st.textContent='';st.hidden=true;}
-  }
-  function changed(){
-    invalidate();
-    clearTimeout(timer);
-    timer=setTimeout(()=>run(),180);
+    const st=$('status'); if(st){st.textContent='Inputs updated. Select both dates, then tap Show to calculate.';st.hidden=false;}
   }
   ids.forEach(id=>{
     const el=$(id); if(!el) return;
-    el.addEventListener('change',changed);
+    el.addEventListener('change',invalidate);
   });
 })();
 initEngine();
 </script>
 <script>
 (function(){
-  if('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js?v=1.54').catch(function(e){console.warn('SW registration failed',e);}); }
+  if('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js?v=1.55').catch(function(e){console.warn('SW registration failed',e);}); }
   var b=document.getElementById('install');
   var deferred=null;
   function updateInstallState(){

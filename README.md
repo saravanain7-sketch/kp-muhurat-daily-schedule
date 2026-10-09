@@ -20,3 +20,8 @@ This is a separate project from the original KP Muhurat Web 2.0 repository.
 - The service worker caches the local app shell. Features depending on external services or resources may still need an internet connection.
 - This is an installable web app (PWA), not a Play Store APK.
 - Calculation logic is not intentionally changed by the PWA packaging. Validate important calculations against your reference before operational use.
+
+## Date-range behavior (updated)
+- Selecting **Date** or **To date** does not run a calculation and does not switch tabs.
+- Select both dates and any other inputs, then tap **Show**. The app calculates the selected range and opens **Results**.
+- After updating the files in GitHub Pages, refresh the site. The service-worker cache version is bumped so the corrected app shell can replace the older cached copy.
