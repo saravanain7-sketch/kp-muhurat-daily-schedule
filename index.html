@@ -1,7 +1,7 @@
 <!doctype html><html><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#1976a8"><meta http-equiv="Permissions-Policy" content="geolocation=(self)"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="kp-icon-192.png">
-<title>KP Muhurat Daily Schedule — New Project</title>
+<title>KP Muhurat — New Project</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#eaf6fc;color:#17313d;font:14px Arial}
 header{padding:12px 14px;background:#f7f7f7;border-bottom:1px solid #9bb9c7;position:sticky;top:0;z-index:3}
@@ -37,15 +37,15 @@ header small{font-size:11px}
 .analysisReason{white-space:normal !important;max-width:420px;vertical-align:top}.analysisReason details summary{cursor:pointer;font-weight:600;line-height:1.2}.reasonFull{padding-top:6px;line-height:1.35;white-space:normal;color:#526770}.mobileReasonRow{display:none}.mobileReasonRow td{white-space:normal !important;background:#f7fbfd;font-size:12px;line-height:1.35}.mobileReasonRow details summary{cursor:pointer;font-weight:bold;padding:2px 0}.mobileReasonRow details div{padding-top:6px;color:#526770}
 @media(max-width:700px){
 /* Daily schedule: fit all five columns on a phone without horizontal scrolling. */
-#results .dailyScheduleWide{overflow-x:hidden !important;overflow-y:auto;max-width:100%;width:100%}
-#results .dailyScheduleWide table{min-width:0 !important;width:100% !important;table-layout:fixed;font-size:10px}
-#results .dailyScheduleWide th,#results .dailyScheduleWide td{padding:4px 2px;font-size:10px;white-space:normal;overflow-wrap:anywhere;word-break:normal;line-height:1.2}
-#results .dailyScheduleWide th:nth-child(1),#results .dailyScheduleWide td:nth-child(1){width:8%;text-align:center}
-#results .dailyScheduleWide th:nth-child(2),#results .dailyScheduleWide td:nth-child(2){width:36%;overflow-wrap:anywhere}
-#results .dailyScheduleWide th:nth-child(3),#results .dailyScheduleWide td:nth-child(3){width:18%;text-align:center}
-#results .dailyScheduleWide th:nth-child(4),#results .dailyScheduleWide td:nth-child(4){width:18%;text-align:center}
-#results .dailyScheduleWide th:nth-child(5),#results .dailyScheduleWide td:nth-child(5){width:20%;text-align:center}
-#results .btnRow .btn{padding:7px 12px;font-size:12px}
+#notes .dailyScheduleWide{overflow-x:hidden !important;overflow-y:auto;max-width:100%;width:100%}
+#notes .dailyScheduleWide table{min-width:0 !important;width:100% !important;table-layout:fixed;font-size:10px}
+#notes .dailyScheduleWide th,#notes .dailyScheduleWide td{padding:4px 2px;font-size:10px;white-space:normal;overflow-wrap:anywhere;word-break:normal;line-height:1.2}
+#notes .dailyScheduleWide th:nth-child(1),#notes .dailyScheduleWide td:nth-child(1){width:8%;text-align:center}
+#notes .dailyScheduleWide th:nth-child(2),#notes .dailyScheduleWide td:nth-child(2){width:36%;overflow-wrap:anywhere}
+#notes .dailyScheduleWide th:nth-child(3),#notes .dailyScheduleWide td:nth-child(3){width:18%;text-align:center}
+#notes .dailyScheduleWide th:nth-child(4),#notes .dailyScheduleWide td:nth-child(4){width:18%;text-align:center}
+#notes .dailyScheduleWide th:nth-child(5),#notes .dailyScheduleWide td:nth-child(5){width:20%;text-align:center}
+#notes .btnRow .btn{padding:7px 12px;font-size:12px}
 /* 0.9.80 mobile Analysis: keep the Lagna table fully visible instead of forcing a hidden horizontal scroll. */
 #analysis .split{display:block !important}
 #analysis .split .wide{overflow-x:visible !important;width:100% !important}
@@ -221,9 +221,10 @@ header small{font-size:11px}
   #analysis .split .wide:nth-child(2) th:nth-child(2),#analysis .split .wide:nth-child(2) td:nth-child(2),#analysis .split .wide:nth-child(2) th:nth-child(3),#analysis .split .wide:nth-child(2) td:nth-child(3),#analysis .split .wide:nth-child(2) th:nth-child(4),#analysis .split .wide:nth-child(2) td:nth-child(4),#analysis .split .wide:nth-child(2) th:nth-child(5),#analysis .split .wide:nth-child(2) td:nth-child(5){width:9% !important;text-align:center}
   #analysis .split .wide:nth-child(2) th:nth-child(6),#analysis .split .wide:nth-child(2) td:nth-child(6){width:47% !important;min-width:0 !important}
 }
+section#placeSelect, section#help{display:none !important}
 </style></head><body>
 <header><b>KP Muhurat</b></header>
-<nav><button class="active" data-t="data">Data</button><button data-t="analysis">Analysis</button><button data-t="results">Results</button><button data-t="notes">Notes</button><button data-t="placeSelect">PlaceSelect</button><button data-t="help">Help</button></nav>
+<nav><button class="active" data-t="data">Data</button><button data-t="analysis">Analysis</button><button data-t="results">Results</button><button data-t="notes">Muhurtam</button></nav>
 <main>
 <section id="data" class="active"><div class="panel blue"><h3>Event data</h3>
 <div class="grid2"><label>Date<input id="date" type="date"></label><label>To date<input id="todate" type="date"></label></div>
@@ -240,18 +241,14 @@ header small{font-size:11px}
 <div class="split"><div class="wide"><table><thead><tr><th>Rasi</th><th>SnL</th><th>StL</th><th>St. Time</th><th>Date</th></tr></thead><tbody id="lagna"></tbody></table></div>
 <div class="wide"><table><thead><tr><th>Time</th><th>SnL</th><th>StL</th><th>SbL</th><th>Y/N</th><th>Reason</th></tr></thead><tbody id="sub"></tbody></table></div></div></div></section>
 
-<section id="results"><div class="panel"><div class="titlebar">Daily Combination Schedule</div>
-<div class="wide dailyScheduleWide"><table id="dailyScheduleTable"><thead><tr><th>No.</th><th>Combination</th><th>Start Time</th><th>Stop Time</th><th>Total Minutes</th></tr></thead><tbody id="dailyScheduleRows"><tr><td colspan="5">Select the date and time range, then press Calculate.</td></tr></tbody></table></div>
-<div id="dailyScheduleSummary" class="status" aria-live="polite">No schedule calculated yet.</div>
-<div class="btnRow"><button class="btn" id="exportDailySchedule" type="button">Export CSV</button></div>
-</div><div class="panel"><div class="titlebar">Chosen Muhurats</div><div class="wide chosenWide"><table id="chosenTable"><thead><tr><th>Date</th><th>Time</th><th>SnL</th><th>StL</th><th>SbL</th><th>Y/N</th><th>Reason</th></tr></thead><tbody id="chosen"></tbody></table></div></div>
+<section id="results"><div class="panel"><div class="titlebar">Chosen Muhurats</div><div class="wide chosenWide"><table id="chosenTable"><thead><tr><th>Date</th><th>Time</th><th>SnL</th><th>StL</th><th>SbL</th><th>Y/N</th><th>Reason</th></tr></thead><tbody id="chosen"></tbody></table></div></div>
 <div id="resultsAnalysisPanel" class="panel resultsAnalysisPanel" hidden>
   <div class="wide"><table class="resultsAnalysisTable"><thead><tr><th>Object</th><th>SubL</th><th>+H</th><th>-H</th><th>Y/N</th><th>Analysis</th></tr></thead><tbody id="resultsAnalysisRows"></tbody></table></div>
 </div>
 <div id="selectedMuhuratChartPanel" class="panel selectedMuhuratChartPanel" hidden>
   <div id="selectedMuhuratChartOnly"></div>
 </div>
-<div class="status resultHint"><b>Results view:</b> Chosen Muhurats are shown here. V1.5.11 reconstruction evidence stays inside Advanced Diagnostics and never changes normal inputs.</div>
+
 <div id="selectedMuhuratPanel" class="panel" hidden>
   <div class="titlebar">Selected Muhurat — Chart & Full Analysis</div><div class="status" style="margin-top:0;margin-bottom:8px"><b>Y/N colour:</b> dark green = Y- / YN / fully good &nbsp; • &nbsp; light green = P- / YP / partial/selectable &nbsp; • &nbsp; red = PY / N / not good</div>
   <div id="selectedMuhuratMeta" class="status">Tap any Muhurat time above to open its chart.</div>
@@ -271,7 +268,7 @@ header small{font-size:11px}
     </div>
   </div>
 </div>
-<details class="diagnosticDetails">
+<details class="diagnosticDetails" hidden>
 <summary>Advanced Diagnostics — V1.5.11 Reconstruction <span class="diagCount">(tap only when you need verification details)</span></summary>
 <div id="diagInner" class="diagInner">
 <div id="sourceEvidenceDynamic"></div>
@@ -304,9 +301,13 @@ header small{font-size:11px}
   <div class="panel"><div class="titlebar">Analysis</div><div class="wide"><table><thead><tr><th>Object</th><th>SubL</th><th>+H</th><th>-H</th><th>Y/N</th><th>Analysis</th></tr></thead><tbody id="detail"></tbody></table></div></div>
 </div>
 </details>
-<div class="panel"><div class="titlebar">Dasa / Bhukti / Antara / Sukshma</div><div id="dasa" class="muted"></div></div></section>
+<div class="panel" id="dasaPanel" hidden><div class="titlebar">Dasa / Bhukti / Antara / Sukshma</div><div id="dasa" class="muted"></div></div></section>
 
-<section id="notes"><div class="panel"><div class="titlebar">Notes</div><textarea id="notesText" placeholder="Add your own notes here..."></textarea></div></section>
+<section id="notes"><div class="panel"><div class="titlebar">Daily Combination Schedule</div>
+<div class="wide dailyScheduleWide"><table id="dailyScheduleTable"><thead><tr><th>No.</th><th>Combination</th><th>Start Time</th><th>Stop Time</th><th>Total Minutes</th></tr></thead><tbody id="dailyScheduleRows"><tr><td colspan="5">Select the date and time range, then press Calculate.</td></tr></tbody></table></div>
+<div id="dailyScheduleSummary" class="status" aria-live="polite">No schedule calculated yet.</div>
+<div class="btnRow"><button class="btn" id="exportDailySchedule" type="button">Export CSV</button></div>
+</div></section>
 <section id="placeSelect"><div class="panel"><h3>PlaceSelect</h3><p class="muted">Search a city/place, select the result, or enter a custom location manually. The selected location updates Place, Latitude, Longitude and Time Zone fields on Data.</p><div class="placeRow"><input id="placeSearch" placeholder="Search city or place, e.g. Pallavaram"><button class="btn" id="placeSearchBtn" type="button">Search</button></div><div id="placeResults" class="placeResults"></div><div class="customBox"><h4>Custom Location</h4><div class="grid2"><label>Place name<input id="customPlace" placeholder="My Location"></label><label>Time Zone<input id="customTz" value="05:30:00"></label></div><div class="grid2"><div><label>Latitude (decimal)<input id="customLat" inputmode="decimal" placeholder="12.9761"></label><select id="customLatDir"><option>N</option><option>S</option></select></div><div><label>Longitude (decimal)<input id="customLon" inputmode="decimal" placeholder="80.1825"></label><select id="customLonDir"><option>E</option><option>W</option></select></div></div><button class="btn" id="applyCustom" type="button">✓ Apply Custom Location</button><span class="muted">You can also enter DMS in the Data tab, for example 12:58:34 and 80:11:01.</span></div><button class="btn" id="gps2" type="button">📍 Use Current GPS Location</button></div></section>
 <section id="help"><div class="panel"><h3>Help</h3><p>This is a browser-hosted reconstruction of KPMuhurat V1.5.11 using the supplied event rules, original place database, KP/astronomy logic, VedicBpUtil reference metadata and V1.5.11 regression evidence.</p><p class="muted"><b>Build 1.35 engine note:</b> the supplied Windows V1.5.11 executable, VedicBpUtil and calculation DLLs are included in the ZIP under <code>reference/windows-engine/</code> as the authoritative reverse-engineering reference. Browser execution still uses the WebAssembly astronomy layer; the Windows DLLs are not directly executable inside Chrome.</p><p class="muted">The original Windows executable/source is not embedded in the browser runtime. Web 1.39 uses a live reconstruction of the decoded event-rule and B/M selection path; exact byte-for-byte Windows equivalence remains a validation target. Stored regression fixtures remain diagnostics only and are not injected into production selection. The app opens with the device current date and Coimbatore, Tamil Nadu, India as the default place. For Android Chrome, Install app uses the browser PWA install prompt when available.</p><p><b>Included original data:</b> AstroOpenSourceAtlas place database, events.txt, Settings.xml, license and package checksums.</p></div></section>
 </main>
