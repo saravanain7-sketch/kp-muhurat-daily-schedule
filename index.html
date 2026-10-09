@@ -272,6 +272,50 @@ th{background:#edf4f8;color:#344f62}
   #data .status{font-size:11px;padding:9px 10px}
 }
 
+
+/* Premium visual layer for Results, Muhurtam and Analysis. CSS only; calculation logic unchanged. */
+:root{--kp-navy:#102a43;--kp-blue:#1769aa;--kp-sky:#e8f5ff;--kp-border:#d6e2ec;--kp-ink:#243746;--kp-muted:#65788a;--kp-green:#dcfce7}
+body{background:#f3f7fb;color:var(--kp-ink);font-family:Inter,Roboto,"Segoe UI",Arial,sans-serif}
+header{background:linear-gradient(115deg,#102a43,#174f7a);color:#fff;border:0;padding:15px 18px;box-shadow:0 3px 14px #102a431f}
+header b,header strong{color:#fff}
+nav{background:#fff;border-bottom:1px solid var(--kp-border);box-shadow:0 3px 12px #102a430c;gap:4px;padding:0 8px}
+nav button{padding:13px 17px;color:#526579;font-weight:650;border-radius:10px 10px 0 0;transition:background .15s,color .15s}
+nav button.active{background:#e7f3ff;color:#075ca8;border-bottom:3px solid #1681d5}
+.panel{border:1px solid var(--kp-border);border-radius:14px;padding:14px;background:#fff;box-shadow:0 5px 18px #102a4308;margin-bottom:14px}
+.titlebar{background:linear-gradient(110deg,#e2f3ff,#f0f8ff);border:1px solid #c4e0f5;border-radius:9px;color:#123b5d;padding:11px 12px;font-size:16px;letter-spacing:.1px;margin-bottom:12px}
+.status{border-radius:9px;background:#f0f8ff;border:1px solid #cfe4f5;color:#35536a;padding:10px 12px}
+.muted{color:var(--kp-muted)}
+table{border-collapse:separate;border-spacing:0;border:1px solid var(--kp-border);border-radius:9px;overflow:hidden;background:#fff;font-size:12px}
+th{background:#edf4fa;color:#29465c;font-weight:750}
+th,td{border:0;border-right:1px solid var(--kp-border);border-bottom:1px solid var(--kp-border);padding:8px 9px}
+tr:last-child td{border-bottom:0}th:last-child,td:last-child{border-right:0}
+tbody tr:nth-child(even) td{background:#f9fbfd}
+tbody tr:hover td{background:#edf7ff}
+#chosenTable tbody tr{cursor:pointer}
+#chosenTable tbody tr.selected td,.muhuratPick.selected td{background:#126fc1!important;color:#fff!important}
+#chosenTable tbody tr.selected td:first-child{border-left:4px solid #064f91}
+#dailyScheduleRows tr.selectedScheduleRow td{background:#126fc1!important;color:#fff!important}
+#analysis .panel .titlebar{margin-bottom:12px}
+#analysis .kpLegend{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px}
+#analysis .kpBadge{border-radius:999px;padding:6px 10px;font-size:11px;font-weight:750}
+#analysis table tbody tr:nth-child(even) td{background:#f8fbfe}
+.btn{border:1px solid #bfd1df;border-radius:9px;background:#fff;color:#174a70;box-shadow:0 2px 5px #102a4308;transition:transform .12s,background .12s}
+.btn:active{transform:scale(.98)}
+.btn:hover{background:#edf7ff}
+input,select,textarea{border-color:#c5d5e2;border-radius:9px;color:#20384a}
+@media(max-width:700px){
+  header{padding:12px 14px}
+  nav{gap:0;padding:0 4px}
+  nav button{padding:12px 13px;font-size:13px}
+  main{padding:8px}
+  .panel{padding:10px;border-radius:12px;margin-bottom:11px}
+  .titlebar{font-size:14px;padding:9px;border-radius:8px}
+  #results .panel,#notes .panel,#analysis .panel{box-shadow:0 3px 12px #102a4308}
+  #results table th,#results table td{padding:7px 6px}
+  #analysis .titlebar{font-size:13px}
+  .status{padding:9px 10px}
+}
+
 </style></head><body>
 <header><b>KP Muhurat</b></header>
 <nav><button class="active" data-t="data">Data</button><button data-t="results">Results</button><button data-t="notes">Muhurtam</button><button data-t="analysis">Analysis</button></nav>
