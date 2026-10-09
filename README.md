@@ -21,5 +21,5 @@ Open `index.html` in a modern browser. If browser restrictions prevent local cal
 ## Preservation
 Keep the original `index.html` and `README.md` for KP Muhurat Web 2.0 in their original location. This folder is the new project.
 
-## Mobile layout update
-The Daily Combination Schedule table now fits phone screens by reducing padding and font size and wrapping combination names, while keeping all five columns visible without horizontal scrolling. This is a layout-only change; it does not change KP calculation or transition timing logic.
+## Select a schedule row
+Tap or focus any row in the Daily Combination Schedule to highlight it in blue. Selecting another row moves the highlight. This is a display-only interaction and does not change calculation timings.

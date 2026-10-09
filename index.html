@@ -13,7 +13,12 @@ label{display:block;font-size:12px;font-weight:bold;margin:7px 0}input,select,te
 .btn{padding:9px 18px;border:1px solid #8caab6;border-radius:3px;background:#fff;font-weight:bold;margin:6px 4px 2px 0}
 .titlebar{background:#bde8f7;border:1px solid #8eb6c3;padding:6px;text-align:center;font-weight:bold;margin-bottom:7px}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:7px}.wide{overflow:auto;max-width:100%;min-width:0}
-table{border-collapse:collapse;width:100%;font-size:12px;min-width:0}.dailyScheduleWide{max-height:72vh;overflow:auto}.dailyScheduleWide table{min-width:420px;font-variant-numeric:tabular-nums}.dailyScheduleWide thead th{position:sticky;top:0;z-index:1}.dailyScheduleWide td:nth-child(1),.dailyScheduleWide td:nth-child(4),.dailyScheduleWide td:nth-child(5){text-align:right}.dailyScheduleWide td:nth-child(2){font-family:Arial,sans-serif}.btnRow{display:flex;justify-content:flex-end}
+table{border-collapse:collapse;width:100%;font-size:12px;min-width:0}.dailyScheduleWide{max-height:72vh;overflow:auto}.dailyScheduleWide table{min-width:420px;font-variant-numeric:tabular-nums}.dailyScheduleWide thead th{position:sticky;top:0;z-index:1}.dailyScheduleWide td:nth-child(1),.dailyScheduleWide td:nth-child(4),.dailyScheduleWide td:nth-child(5){text-align:right}.dailyScheduleWide td:nth-child(2){font-family:Arial,sans-serif}
+#dailyScheduleRows tr{cursor:pointer}
+#dailyScheduleRows tr:focus{outline:2px solid #0879c9;outline-offset:-2px}
+#dailyScheduleRows tr.selectedScheduleRow td{background:#0879c9 !important;color:#fff !important}
+#dailyScheduleRows tr.selectedScheduleRow td:first-child{font-weight:700}
+.btnRow{display:flex;justify-content:flex-end}
 th,td{border:1px solid #adbec6;padding:5px;white-space:nowrap;text-align:left}th{background:#eef5f8}
 .good{background:#d9f4df}.bad{background:#ffd2d2}.veryGood{background:#74d680 !important;color:#0b4d12;font-weight:700}.canSelect{background:#d9f4df !important;color:#245b2a}.notGood{background:#ffd2d2 !important;color:#8b1a1a}.analysisYN{width:44px;min-width:44px;max-width:44px;text-align:center !important;font-weight:700;padding-left:4px !important;padding-right:4px !important}.analysisYN.veryGood{background:#008000 !important;color:#fff !important}.analysisYN.canSelect{background:#9be79b !important;color:#245b2a !important}.analysisYN.notGood{background:#ff6666 !important;color:#8b0000 !important}.muhuratPick.selected td{background:#0877c9 !important;color:#fff !important}.muhuratPick.selected td:nth-child(n+6){background:#0877c9 !important;color:#fff !important}.muted{color:#61727a}.status{padding:8px;background:#eef8fc;border:1px solid #b7d3df;margin-top:8px}.placeRow{display:flex;gap:8px;align-items:stretch}.placeRow input{flex:1}.gpsBtn{margin:0;min-width:82px}.placeResults{margin-top:8px;display:grid;gap:6px}.placeResult{display:block;width:100%;text-align:left;padding:10px;border:1px solid #9ebdcc;background:#fff;border-radius:4px}.placeResult b{display:block}.placeResult small{color:#61727a}.customBox{margin-top:12px;padding:10px;border:1px dashed #9ebdcc;border-radius:4px;background:#f7fbfd}.customBox h4{margin:0 0 6px}.customBox .grid2>div{min-width:0}.customBox select{width:100%;margin-top:0}
 @media(max-width:700px){
@@ -1445,7 +1450,16 @@ function renderDailySchedule(date,from,to,lat,lon,tz,transitions,endDate){
    total_minutes:Math.max(0,Math.round((b-a)/60)),start_seconds:a,stop_seconds:b});
  }
  window.__dailyScheduleRows=rows;
- body.innerHTML=rows.length?rows.map(r=>`<tr><td>${r.no}</td><td>${r.combination}</td><td>${r.start_time}</td><td>${r.stop_time}</td><td>${r.total_minutes}</td></tr>`).join(''):'<tr><td colspan="5">No intervals found in the selected range.</td></tr>';
+ body.innerHTML=rows.length?rows.map(r=>`<tr tabindex="0" role="button" aria-selected="false" title="Select this combination"><td>${r.no}</td><td>${r.combination}</td><td>${r.start_time}</td><td>${r.stop_time}</td><td>${r.total_minutes}</td></tr>`).join(''):'<tr><td colspan="5">No intervals found in the selected range.</td></tr>';
+ // Selecting any schedule row highlights that entire row in blue. Only one row stays selected.
+ const selectScheduleRow = row => {
+  body.querySelectorAll('tr.selectedScheduleRow').forEach(el=>{el.classList.remove('selectedScheduleRow');el.setAttribute('aria-selected','false');});
+  if(row && row.cells && row.cells.length===5){row.classList.add('selectedScheduleRow');row.setAttribute('aria-selected','true');}
+ };
+ body.querySelectorAll('tr[tabindex="0"]').forEach(row=>{
+  row.addEventListener('click',()=>selectScheduleRow(row));
+  row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();selectScheduleRow(row);}});
+ });
  if(summary)summary.textContent=rows.length+' intervals • '+date+' • '+scheduleClock(fromSec)+'–'+scheduleClock(toSec)+'.';
 }
 function exportDailyScheduleCSV(){
