@@ -1,7 +1,7 @@
 <!doctype html><html><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#1976a8"><meta http-equiv="Permissions-Policy" content="geolocation=(self)"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="kp-icon-192.png">
-<title>KPMuhurat Web 2.19 — KP Muhurat V1.5.11</title>
+<title>KPMuhurat Web 2.25 — KP Muhurat V1.5.11</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#eaf6fc;color:#17313d;font:14px Arial}
 header{padding:12px 14px;background:#f7f7f7;border-bottom:1px solid #9bb9c7;position:sticky;top:0;z-index:3}
@@ -317,9 +317,137 @@ nav button{flex:0 0 auto;font-size:14px;padding:14px 18px}
 #results > details.diagnosticDetails,
 #results > #dasaPanel { display: none !important; }
 </style>
+
+<style id="layout-only-web220">
+/* Web 2.20: visual/layout-only refresh based on the supplied reference screenshot.
+   No calculation, astronomy, transition, event-selection or timing code is changed. */
+:root{color-scheme:light}
+body{background:#f0f5fb;color:#1c3346;font:16px Arial,sans-serif}
+header{padding:20px 26px;background:linear-gradient(110deg,#12395d,#08264a);color:#fff;border:0;position:sticky;top:0;z-index:5;min-height:86px;display:flex;align-items:center}
+header b{font-size:32px;letter-spacing:-.4px}
+header small{display:none}
+nav{top:86px;background:#fff;border:0;border-bottom:1px solid #d6e1eb;box-shadow:0 2px 0 rgba(20,50,75,.05);padding:0 8px;gap:0;scrollbar-width:none}
+nav button{font-size:16px;font-weight:700;color:#516475;padding:17px 19px;border-bottom:4px solid transparent;min-height:64px}
+nav button.active{background:#e7f3ff;color:#17649a;border-bottom-color:#1683c5}
+main{max-width:1000px;padding:18px 16px 28px}
+#data .panel.blue{position:relative;background:#fff;border:1px solid #d7e1e9;border-radius:22px;padding:28px 23px 24px;box-shadow:0 8px 26px rgba(23,57,82,.05);overflow:hidden}
+#data .panel.blue:before{content:"";position:absolute;top:0;left:0;right:0;height:9px;background:linear-gradient(90deg,#1593c4,#7ed0df);border-radius:22px 22px 0 0}
+#data .panel.blue h3{font-size:26px;line-height:1.2;margin:8px 0 28px;color:#173b58}
+#data .panel.blue h3:after{content:"DATE · TIME · LOCATION";display:block;margin-top:12px;font-size:13px;letter-spacing:1.4px;color:#8193a1;font-weight:700}
+#data .grid2{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+#data label{font-size:16px;font-weight:700;color:#405667;margin:14px 0 18px}
+#data input,#data select{font:16px Arial,sans-serif;color:#203442;background:#fbfdff;border:1.5px solid #ccd9e2;border-radius:15px;min-height:62px;padding:15px 16px;outline-offset:2px}
+#data input:focus,#data select:focus{border-color:#8dc9ec;box-shadow:0 0 0 3px rgba(60,159,211,.12)}
+#data .grid3{grid-template-columns:minmax(0,1fr) 118px;gap:12px;align-items:end}
+#data .grid3 select{align-self:end;margin-bottom:0}
+#data .placeRow{gap:10px;align-items:stretch}
+#data .placeRow input{min-width:0;flex:1 1 0}
+#data .placeRow .btn{margin:0;min-width:118px;min-height:62px;border-radius:15px;background:#fff;color:#22516f;border:1.5px solid #ccd9e2;font-size:16px;padding:12px 14px}
+#data .placeRow .gpsBtn{min-width:118px}
+#data #show{display:inline-flex;align-items:center;justify-content:center;min-width:210px;min-height:78px;border:0;border-radius:16px;background:linear-gradient(110deg,#147bb6,#168bc4);color:#fff;font-size:19px;padding:18px 30px;margin:10px 14px 0 0;box-shadow:0 7px 15px rgba(20,123,182,.15)}
+#data #install{border-radius:12px}
+#data #placeDbStatus{font-size:14px}
+#data #status{border-radius:14px;padding:14px 16px;line-height:1.5}
+@media(max-width:700px){
+  body{font-size:16px}
+  header{min-height:86px;padding:17px 26px}
+  header b{font-size:32px}
+  nav{top:86px}
+  nav button{padding:17px 18px;font-size:16px}
+  main{padding:18px 16px 26px}
+  #data .panel.blue{padding:28px 23px 24px;border-radius:22px}
+  #data .grid2{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+  #data .grid3{grid-template-columns:minmax(0,1fr) 118px;gap:12px}
+  #data label{font-size:16px;margin:14px 0 18px}
+  #data input,#data select{font-size:16px;min-height:62px;padding:15px 16px}
+  #data .placeRow{gap:10px}
+  #data .placeRow .btn,#data .placeRow .gpsBtn{min-width:0;width:22%;font-size:15px;padding:10px 7px}
+  #data .placeRow input{width:56%;flex:1 1 56%;font-size:15px}
+  #data #show{min-width:210px;min-height:78px}
+}
+@media(max-width:390px){
+  #data .panel.blue{padding-left:15px;padding-right:15px}
+  #data .grid3{grid-template-columns:minmax(0,1fr) 82px;gap:8px}
+  #data .grid2{gap:9px}
+  #data .placeRow .btn,#data .placeRow .gpsBtn{font-size:13px}
+  #data .placeRow input{font-size:14px;padding:12px 10px}
+  nav button{padding-left:14px;padding-right:14px}
+}
+</style>
+
+
+<style id="layout-reference-size-221">
+/* Web 2.21: match the supplied 698px-wide mobile reference dimensions.
+   Presentation only: deliberately no calculation or selection changes. */
+@media (max-width: 700px) {
+  header { min-height: 86px; height: 86px; padding: 17px 26px; }
+  header b { font-size: 32px; line-height: 1.2; }
+  nav { min-height: 81px; height: 81px; align-items: stretch; }
+  nav button { min-height: 80px; height: 80px; padding: 17px 18px; font-size: 16px; }
+  main { padding: 18px 16px 26px; }
+  #data .panel.blue { padding: 28px 23px 24px; border-radius: 22px; }
+  #data .panel.blue h3 { margin: 8px 0 28px; font-size: 26px; line-height: 1.2; }
+  #data .grid2 { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 14px; }
+  #data label { font-size: 16px; line-height: 1.25; margin: 14px 0 14px; }
+  #data input, #data select { min-height: 77px; height: 77px; padding: 15px 16px; font-size: 16px; border-radius: 15px; }
+  #data .grid3 { grid-template-columns: minmax(0,1fr) 118px; gap: 12px; align-items: end; }
+  #data .grid3 select { width: 118px; min-width: 118px; }
+  #data .placeRow { display: flex; justify-content: space-between; gap: 10px; align-items: stretch; }
+  #data .placeRow input { width: auto; min-width: 0; flex: 1 1 auto; font-size: 15px; padding: 15px 16px; }
+  #data .placeRow .btn, #data .placeRow .gpsBtn { flex: 0 0 118px; width: 118px; min-width: 118px; min-height: 77px; height: 77px; padding: 10px 7px; font-size: 16px; border-radius: 15px; }
+  #data #show { min-width: 210px; width: 210px; min-height: 78px; height: 78px; margin-top: 10px; }
+  #data #placeDbStatus { font-size: 14px; }
+}
+@media (max-width: 390px) {
+  #data .panel.blue { padding-left: 15px; padding-right: 15px; }
+  #data .grid3 { grid-template-columns: minmax(0,1fr) 82px; gap: 8px; }
+  #data .grid3 select { width: 82px; min-width: 82px; }
+  #data .placeRow .btn, #data .placeRow .gpsBtn { flex-basis: 84px; width: 84px; min-width: 84px; font-size: 13px; }
+  #data .placeRow input { font-size: 14px; padding: 12px 10px; }
+  nav button { padding-left: 14px; padding-right: 14px; }
+}
+</style>
+
+
+
+
+
+<style id="reference-compact-size-225">
+/* Web 2.25: compact mobile sizing only; keep calculation JavaScript untouched. */
+@media (max-width:700px){
+  header{height:48px;min-height:48px;padding:10px 14px;display:flex;align-items:center;gap:8px}
+  header b{font-size:20px;line-height:1.2}
+  header small{font-size:10px;margin-left:auto}
+  nav{top:48px;height:46px;min-height:46px;align-items:stretch;overflow-x:auto}
+  nav button{height:45px;min-height:45px;padding:8px 12px;font-size:13px;line-height:1.2}
+  main{padding:10px 9px 18px}
+  #data .panel.blue{padding:16px 14px 15px;border-radius:15px}
+  #data .panel.blue h3{font-size:20px;margin:4px 0 17px;line-height:1.2}
+  #data .panel.blue .muted{font-size:11px}
+  #data .grid2{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+  #data label{font-size:13px;line-height:1.2;margin:8px 0 7px}
+  #data input,#data select{height:44px;min-height:44px;padding:8px 10px;font-size:14px;border-radius:9px}
+  #data .grid3{grid-template-columns:minmax(0,1fr) 76px;gap:8px;align-items:end}
+  #data .grid3 select{width:76px;min-width:76px;height:46px;min-height:46px;padding:6px 7px}
+  #data .placeRow{gap:6px;align-items:stretch}
+  #data .placeRow input{min-width:0;flex:1 1 auto;width:auto;height:44px;min-height:44px;font-size:12px;padding:8px 9px}
+  #data .placeRow .btn,#data .placeRow .gpsBtn{flex:0 0 68px;width:68px;min-width:68px;height:44px;min-height:44px;padding:7px 3px;font-size:12px;border-radius:9px}
+  #data #show{width:118px;min-width:118px;height:48px;min-height:48px;padding:8px 12px;font-size:16px;margin-top:7px}
+  #data #placeDbStatus{font-size:11px}
+  #data #status{font-size:12px;padding:10px 11px;line-height:1.4}
+}
+@media(max-width:390px){
+  #data .panel.blue{padding-left:12px;padding-right:12px}
+  #data .grid3{grid-template-columns:minmax(0,1fr) 66px;gap:7px}
+  #data .grid3 select{width:66px;min-width:66px}
+  #data .placeRow .btn,#data .placeRow .gpsBtn{flex-basis:62px;width:62px;min-width:62px;font-size:11px}
+  nav button{padding-left:10px;padding-right:10px;font-size:12px}
+}
+</style>
+
 </head><body>
-<header><b>KP Muhurat</b> <small>V 1.5.11 — Web 2.19</small></header>
-<nav><button class="active" data-t="data">Data</button><button data-t="results">Results</button><button data-t="muhurtham">Muhurtham</button><button data-t="chart">Chart</button><button data-t="analysis">Analysis</button><button data-t="notes">Notes</button><button data-t="placeSelect">PlaceSelect</button><button data-t="help">Help</button></nav>
+<header><b>KP Muhurat</b> <small>V 1.5.11 — Web 2.25</small></header>
+<nav><button class="active" data-t="data">Data</button><button data-t="results">Results</button><button data-t="muhurtham">Muhurtham</button><button data-t="chart">Chart</button><button data-t="analysis">Analysis</button></nav>
 <main>
 <section id="dashboard">
   <div class="dashboard-hero">
@@ -3046,7 +3174,7 @@ initEngine();
     });
   }
 })();
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js?v=2.18').catch(function(e){console.warn('SW registration failed',e);}); }
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js?v=2.25').catch(function(e){console.warn('SW registration failed',e);}); }
   var b=document.getElementById('install');
   var deferred=null;
   function updateInstallState(){
