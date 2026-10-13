@@ -218,3 +218,10 @@ This build makes the Analysis tables denser on mobile (22px rows, smaller text, 
 - Kept the Analysis table and its row selection/refresh behavior.
 - No astronomy, chart calculations, transition boundaries, event selection, or Muhurat timings were changed.
 - Service-worker cache version updated to v2-29.
+
+
+## Web 2.30 — Data mobile fit (layout only)
+- Kept the Data, Results, Muhurtham, Chart and Analysis tabs.
+- Restored two-column Date/To date and From/To time fields on mobile.
+- Reduced vertical spacing and field heights so the Show button is easier to reach on a phone.
+- No JavaScript calculation, transition, event-rule or timing logic was changed.
