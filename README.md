@@ -144,7 +144,77 @@ Fixed the reported `Calculation error: escHtml is not defined` by exposing the H
 - This is a rollback of the unverified extra filter, not a claim of exact Windows parity. Compare Web and Windows results for the same date and settings to identify any remaining extra timestamps.
 
 
-## Web 2.20 — Compact mobile layout only
-- Keeps the visible navigation to Data, Results, Muhurtham, Chart, and Analysis. Notes, PlaceSelect, and Help are no longer shown as tabs; their underlying markup is retained to avoid disturbing existing script references.
-- Makes the Data form more compact on mobile, keeps Date/To date and From/To time side-by-side, and reduces header, field, and button sizing.
-- This update is presentation-only: no astronomical calculation, transition generation, event selection, or Muhurat timing JavaScript was changed.
+## Web 2.18 — Native CharaRasi transition filter
+- Restored the Windows V1.5.11 default `CharaRasi=false` transition behavior: movable-sign Lagna transitions (Aries, Cancer, Libra and Capricorn) are excluded from Results unless that option is enabled.
+- Web 2.17 had calculated all transition rows without applying this default setting, which could introduce extra candidates.
+- The filter is applied to live transition sign data, not hardcoded timestamps or a date-specific allowlist.
+- This is a source-based parity correction; compare the same date, location, timezone and event against Windows before treating exact list parity as verified.
+
+
+## Web 2.19 — targeted Event 05 selection parity correction
+- Preserves the existing layout, tabs, chart, Analysis, and input format.
+- Removes the unsupported Event 05 all-positive selection gate. Windows V1.5.11 can select a Muhurat while its displayed Event 05 rows contain N/NN/PY/YP labels; those labels are analysis evidence, not a second automatic selection gate.
+- The live selection decision uses the native Badhaka/Maraka gate. No date-specific timestamps or result lists are hardcoded.
+- Service-worker cache namespace bumped to prevent the previous app shell being reused.
+- Validation: JavaScript syntax and ZIP integrity checked. Exact runtime parity still requires running this build and comparing the resulting list with Windows V1.5.11.
+
+
+## Web 2.21 — layout-only update
+- Updates the Data form layout to match the supplied compact two-column mobile reference.
+- Updates header, tabs, card styling, input sizing, and spacing only.
+- Leaves astronomy, KP calculations, transition boundaries, event rules, and Muhurat selection logic unchanged from Web 2.19.
+
+
+## Web 2.21 — reference-size correction
+
+CSS-only mobile layout sizing adjustment to match the supplied screenshot dimensions: 86px header, 81px tab bar, 77px fields/buttons, two-column date/time rows, and fixed-width Find/GPS buttons. Calculation scripts and selection/timing logic are unchanged from Web 2.20.
+
+
+## Web 2.22 — mobile reference sizing correction
+
+CSS-only correction for mobile pages rendered at roughly twice the supplied reference screenshot dimensions. It reduces header, tabs, typography, form controls, margins, and Find/GPS widths while preserving the same responsive layout structure. No JavaScript, astronomy, transition calculation, selection logic, or timing code was changed. Service worker cache updated to v2-22.
+
+
+## Web 2.23 — Restore reference mobile sizing
+- Removed the Web 2.22 half-scale CSS override that made the mobile interface too small.
+- Restores the Web 2.21 reference-sized header, tabs, labels, inputs, spacing, and buttons.
+- Calculation, astronomical, transition, selection, and timing JavaScript is unchanged from Web 2.22.
+- Service worker cache bumped to v2-23.
+
+
+## Web 2.24 — Navigation layout only
+- Removed the Notes, PlaceSelect, and Help buttons from the visible top navigation to match the requested reference layout.
+- Kept Data, Results, Muhurtham, Chart, and Analysis in the navigation.
+- No calculation, astronomy, transition-time, event-selection, or analysis JavaScript was changed.
+- Service-worker cache version updated to v2-24.
+
+
+## Web 2.25 — Compact reference sizing
+- CSS-only adjustment to reduce oversized mobile header, navigation, labels, inputs, dropdowns, and buttons to the compact reference scale.
+- Navigation remains exactly Data, Results, Muhurtham, Chart, Analysis; Notes, PlaceSelect, and Help are not navigation tabs.
+- All calculation JavaScript is preserved from Web 2.24; no astronomy, transition timing, or Muhurat selection logic was changed.
+- Service-worker cache version updated to v2-25.
+
+
+## Web 2.26 — Selected Analysis Time Label (UI only)
+- Added a visible date/time label directly above the Results Analysis table.
+- The label refreshes from the same selected timestamp whenever a Chosen Muhurat row is tapped or the Time field is edited and committed.
+- No astronomical calculations, transition boundaries, selection rules, or Muhurat timings were changed.
+
+
+## Web 2.28 — Compact Analysis Table
+
+This build makes the Analysis tables denser on mobile (22px rows, smaller text, minimal cell padding) to resemble the compact Windows V1.5.11 table. The change is CSS/layout only. The calculation and Muhurat selection JavaScript was not modified. Navigation remains Data, Results, Muhurtham, Chart, and Analysis; Notes, PlaceSelect, and Help are not added.
+
+
+## Web 2.28 — UI-only cleanup
+- Removed the long calculation/diagnostic sentence from the status area; it now shows only “Calculation completed.”
+- Hid the extra editable “Time” control beside “Chosen Muhurats”. The Muhurat results table still displays its Time column.
+- No astronomy, transition generation, event selection, Muhurat timestamps, Analysis, or Chart calculation code was intentionally changed.
+
+
+## Web 2.29 — Remove Results Analysis time heading (UI only)
+- Removed only the “Analysis time: YYYY-MM-DD HH:MM:SS” heading above the Results Analysis table.
+- Kept the Analysis table and its row selection/refresh behavior.
+- No astronomy, chart calculations, transition boundaries, event selection, or Muhurat timings were changed.
+- Service-worker cache version updated to v2-29.
